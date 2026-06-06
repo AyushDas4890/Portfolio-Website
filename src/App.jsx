@@ -7,7 +7,7 @@ import {
 import NeuralBackground from './NeuralBackground.jsx'
 import { Tilt, CountUp, CommandPalette, Typewriter, CustomCursor, MOD_KEY } from './effects.jsx'
 
-const RESUME_URL = `${import.meta.env.BASE_URL}Ayush_Das_Resume.docx`
+const RESUME_URL = `${import.meta.env.BASE_URL}Ayush_Das_ML_Resume.pdf`
 
 function useTheme() {
   const [theme, setTheme] = useState(() => {
@@ -406,7 +406,7 @@ export default function App() {
   const openUrl = (url) => () => window.open(url, '_blank', 'noopener')
   const downloadResume = () => {
     const a = document.createElement('a')
-    a.href = RESUME_URL; a.download = 'Ayush_Das_Resume.docx'; a.click()
+    a.href = RESUME_URL; a.download = 'Ayush_Das_ML_Resume.pdf'; a.click()
   }
   const commands = [
     { label: 'Go to About', hint: 'section', ico: '→', action: go('about') },
