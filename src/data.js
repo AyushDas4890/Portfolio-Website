@@ -10,11 +10,11 @@ export const profile = {
   github: 'https://github.com/AyushDas4890',
   linkedin: 'https://linkedin.com/in/ayushdas4890',
   summary:
-    'Computer Science undergraduate building end-to-end machine learning, NLP and Generative AI systems — from multi-agent research pipelines to legal document intelligence and recommendation engines. I care about models that ship: explainable, measured, and wrapped in interfaces people actually use.',
+    'Computer Science undergraduate building end-to-end machine learning, NLP and Generative AI systems — from multi-agent research pipelines to legal document intelligence and sustainability analytics. I care about models that ship: explainable, measured, and wrapped in interfaces people actually use.',
   stats: [
     { value: '8.08', label: 'CGPA · B.Tech CSE' },
     { value: '5+', label: 'End-to-end AI systems' },
-    { value: '87%', label: 'Legal NLP val. accuracy' },
+    { value: '>85%', label: 'Legal NLP val. accuracy' },
     { value: '7th', label: 'University Coding Showdown' },
   ],
 }
@@ -48,7 +48,7 @@ export const projects = [
       'An end-to-end Legal NLP pipeline that detects contradictions across legal and financial documents.',
     highlights: [
       'DeBERTa-v3-large fine-tuned for contradiction detection',
-      '87% validation accuracy via threshold tuning & optimization',
+      '>85% validation accuracy via threshold tuning & optimization',
       'Explainable AI with cross-attention heatmaps for evidence extraction',
       'FastAPI backend + analytics dashboard for real-time conflict analysis',
     ],
@@ -59,34 +59,35 @@ export const projects = [
     id: 'grocery-sales-predictor',
     title: 'Grocery Sales Predictor',
     period: 'Jan 2026',
-    tag: 'Forecasting · XGBoost',
+    tag: 'Forecasting · ML',
     accent: '#ff7ac6',
     blurb:
       'A demand-forecasting model that predicts grocery sales from store, product and temporal signals.',
     highlights: [
-      'XGBoost demand-forecasting model with engineered features',
+      'Gradient-boosted regression for seasonal demand forecasting',
       'Feature engineering across store, product & temporal attributes',
       'Multi-page Streamlit app for real-time sales prediction',
       'Built with Pandas & Scikit-Learn data pipelines',
     ],
-    stack: ['XGBoost', 'Pandas', 'Scikit-Learn', 'Streamlit'],
+    stack: ['Scikit-Learn', 'Pandas', 'Plotly', 'Streamlit'],
     link: 'https://github.com/AyushDas4890/Grocery-sales-predictor',
   },
   {
-    id: 'music-recommender',
-    title: 'Instant Music Recommendation',
-    period: 'Nov 2025',
-    tag: 'RecSys · ML',
+    id: 'carbon-footprint',
+    title: 'Carbon Footprint Generator',
+    period: 'Apr 2026',
+    tag: 'Sustainability ML · Django',
     accent: '#ffd07a',
     blurb:
-      'A content-based recommendation engine that surfaces personalized song suggestions in real time.',
+      'C4Future — an AI tool that estimates a product’s carbon footprint and shows how to offset it.',
     highlights: [
-      'TF-IDF vectorization with cosine-similarity matching',
-      'Content-based filtering for personalized recommendations',
-      'Interactive Streamlit interface for real-time results',
+      'Random Forest regressor predicts CO₂ emissions from product attributes',
+      'Breaks emissions into materials, manufacturing & transport',
+      'Offset strategies + real-world equivalencies (trees, car-km)',
+      'Django backend with interactive Chart.js dashboards',
     ],
-    stack: ['TF-IDF', 'Scikit-Learn', 'Pandas', 'Streamlit'],
-    link: 'https://github.com/AyushDas4890/Instant-music-recommendation-system-using-Machine-Learning',
+    stack: ['Django', 'Scikit-Learn', 'Pandas', 'Chart.js'],
+    link: 'https://github.com/AyushDas4890/Carbon_Footprint_Generator',
   },
 ]
 
@@ -97,17 +98,20 @@ export const githubFallback = [
   { name: 'AI-Research-Assistant-Pipeline', display: 'AI Research Assistant Pipeline', language: 'Python', stars: 0, updated: '2026-06-03', description: 'Autonomous 5-agent LangGraph system that plans, searches, reads, critiques and writes sourced reports, with ChromaDB long-term memory.', url: 'https://github.com/AyushDas4890/AI-Research-Assistant-Pipeline' },
   { name: 'Legal-Conflict-Resolver', display: 'Legal Clause Conflict Resolver', language: 'Python', stars: 0, updated: '2026-05-05', description: 'DeBERTa-v3 Legal NLP pipeline detecting contradictions in legal documents.', url: 'https://github.com/AyushDas4890/Legal-Conflict-Resolver' },
   { name: 'Library-book-classifier', display: 'Library Book Classifier', language: 'Python', stars: 0, updated: '2026-05-11', description: 'ML classifier that categorizes books by subject from metadata and text.', url: 'https://github.com/AyushDas4890/Library-book-classifier' },
-  { name: 'Carbon_Footprint_Generator', display: 'Carbon Footprint Generator', language: 'Python', stars: 1, updated: '2026-04-11', description: 'Estimates personal/organizational carbon footprint from activity inputs.', url: 'https://github.com/AyushDas4890/Carbon_Footprint_Generator' },
+  { name: 'Carbon_Footprint_Generator', display: 'Carbon Footprint Generator', language: 'Python', stars: 1, updated: '2026-04-11', description: 'C4Future — Random Forest tool estimating product CO₂ emissions with offset strategies and Chart.js dashboards.', url: 'https://github.com/AyushDas4890/Carbon_Footprint_Generator' },
   { name: 'LANGCHAIN', display: 'LangChain Experiments', language: 'Jupyter Notebook', stars: 0, updated: '2026-04-11', description: 'Notebooks exploring LangChain chains, agents and retrieval workflows.', url: 'https://github.com/AyushDas4890/LANGCHAIN' },
   { name: 'Natural-Language-Processing', display: 'Natural Language Processing', language: 'Jupyter Notebook', stars: 0, updated: '2026-03-17', description: 'NLP fundamentals: tokenization, embeddings, classification and more.', url: 'https://github.com/AyushDas4890/Natural-Language-Processing' },
+  { name: 'Weather_Clustering_Project', display: 'Weather Clustering', language: 'TypeScript', stars: 0, updated: '2026-03-16', description: 'Unsupervised clustering of weather patterns with an interactive front end.', url: 'https://github.com/AyushDas4890/Weather_Clustering_Project' },
+  { name: 'Grocery-sales-predictor', display: 'Grocery Sales Predictor', language: 'Jupyter Notebook', stars: 0, updated: '2026-01-02', description: 'Gradient-boosted demand-forecasting model with a Streamlit prediction app.', url: 'https://github.com/AyushDas4890/Grocery-sales-predictor' },
+  { name: 'yt_chatbot', display: 'YouTube Chatbot', language: 'JavaScript', stars: 0, updated: '2025-12-13', description: 'Chatbot that answers questions about YouTube video content.', url: 'https://github.com/AyushDas4890/yt_chatbot' },
 ]
 
 export const skills = [
   { group: 'Languages', items: ['Python', 'C++', 'C', 'SQL', 'JavaScript'] },
-  { group: 'AI / ML', items: ['PyTorch', 'TensorFlow', 'Scikit-Learn', 'XGBoost', 'Pandas', 'NumPy'] },
+  { group: 'AI / ML', items: ['PyTorch', 'TensorFlow', 'Scikit-Learn', 'Random Forest', 'Pandas', 'NumPy'] },
   { group: 'LLMs & NLP', items: ['Transformers', 'Hugging Face', 'DeBERTa-v3', 'LangChain', 'LangGraph'] },
-  { group: 'Deployment', items: ['FastAPI', 'Streamlit', 'ChromaDB', 'Git', 'GitHub'] },
-  { group: 'Web', items: ['HTML', 'CSS', 'JavaScript'] },
+  { group: 'Deployment', items: ['FastAPI', 'Django', 'Streamlit', 'ChromaDB', 'Git'] },
+  { group: 'Web', items: ['HTML', 'CSS', 'JavaScript', 'Chart.js'] },
 ]
 
 export const experience = [
@@ -115,6 +119,7 @@ export const experience = [
     role: 'Web Development Intern',
     company: 'VanillaCart',
     period: 'Aug 2025 – Oct 2025',
+    cert: 'https://docs.google.com/document/d/1yx9rmpJFv_MrBOvBMtv_20F_qTgtnTWBQVLuN-EESeM/edit',
     points: [
       'Built and maintained responsive websites using HTML, CSS and JavaScript.',
       'Managed content migration and asset integration following SEO best practices.',
@@ -124,11 +129,11 @@ export const experience = [
 ]
 
 export const certifications = [
-  { name: 'ChatGPT-4 Prompt Engineering', issuer: 'IBM', date: 'Aug 2025' },
-  { name: 'Master Generative AI & GenAI Tools', issuer: 'Udemy', date: 'Aug 2025' },
-  { name: 'Machine Learning with Data Science', issuer: 'CipherSchools', date: 'Jul 2025' },
-  { name: 'Python for Data Science and AI', issuer: 'IBM', date: 'Jun 2025' },
-  { name: 'Prompt Engineering Essentials', issuer: 'Google', date: 'Jun 2025' },
+  { name: 'ChatGPT-4 Prompt Engineering', issuer: 'IBM', date: 'Aug 2025', link: 'https://drive.google.com/file/d/1S98NfYHwt_9ChTyoAGVu89KFUnvHoEAv/view' },
+  { name: 'Master Generative AI & GenAI Tools', issuer: 'Udemy', date: 'Aug 2025', link: 'https://drive.google.com/file/d/1D3m9qSJ9XOLPk6m519dFh_CrMYV-P8-p/view' },
+  { name: 'Machine Learning with Data Science', issuer: 'CipherSchools', date: 'Jul 2025', link: 'https://drive.google.com/file/d/1qVjHyZyHDPDClH8gLUyLNEjUJTX9LyRd/view' },
+  { name: 'Python for Data Science and AI', issuer: 'IBM', date: 'Jun 2025', link: 'https://docs.google.com/document/d/1H1YgaIq_-hAum5q8uGPtSFcsXV2PdvaKmPLkMrjbuLw/edit' },
+  { name: 'Prompt Engineering Essentials', issuer: 'Google', date: 'Jun 2025', link: 'https://www.coursera.org/account/accomplishments/verify/P0C2I6WML0YC' },
 ]
 
 export const education = {

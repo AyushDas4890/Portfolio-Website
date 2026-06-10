@@ -328,6 +328,7 @@ function Path() {
                 <div className="tl-role">{e.role}</div>
                 <div className="tl-org">{e.company}</div>
                 <ul className="tl-points">{e.points.map(pt => <li key={pt}>{pt}</li>)}</ul>
+                {e.cert && <a className="tl-cert" href={e.cert} target="_blank" rel="noreferrer">View internship certificate ↗</a>}
               </div>
             </div>
           </Reveal>
@@ -352,11 +353,18 @@ function Path() {
         <div className="cert-grid">
           {certifications.map((c, i) => (
             <Reveal key={c.name} delay={(i % 4) * 0.05}>
-              <div className="cert">
+              <a className="cert" href={c.link} target="_blank" rel="noreferrer" title={`View ${c.name} certificate`}>
+                <div className="cert-top">
+                  <span className="cert-seal" aria-hidden>{c.issuer.slice(0, 1)}</span>
+                  <span className="cert-check" aria-hidden>✓ Verified</span>
+                </div>
                 <div className="issuer">{c.issuer}</div>
                 <div className="name">{c.name}</div>
-                <div className="date">{c.date}</div>
-              </div>
+                <div className="cert-foot">
+                  <span className="date">{c.date}</span>
+                  <span className="cert-verify">View credential ↗</span>
+                </div>
+              </a>
             </Reveal>
           ))}
         </div>
