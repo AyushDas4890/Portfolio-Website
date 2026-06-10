@@ -4,7 +4,7 @@ import {
   profile, projects, skills, experience, certifications, education,
   githubUser, githubFallback,
 } from './data.js'
-import NeuralBackground from './NeuralBackground.jsx'
+import ThreeBackground from './ThreeBackground.jsx'
 import { Tilt, CountUp, CommandPalette, Typewriter, CustomCursor, MOD_KEY } from './effects.jsx'
 
 const RESUME_URL = `${import.meta.env.BASE_URL}Ayush_Das_ML_Resume.pdf`
@@ -426,7 +426,7 @@ export default function App() {
     <>
       <CustomCursor />
       <div className="bg" aria-hidden />
-      <NeuralBackground theme={theme} />
+      <ThreeBackground theme={theme} />
       <div className="bg-glow" aria-hidden />
       <Progress />
       <Nav theme={theme} toggleTheme={toggleTheme} commands={commands} />
