@@ -57,23 +57,6 @@ export const projects = [
     demo: 'https://website-orpin-chi-25.vercel.app/',
   },
   {
-    id: 'grocery-sales-predictor',
-    title: 'Grocery Sales Predictor',
-    period: 'Jan 2026',
-    tag: 'Forecasting · ML',
-    accent: '#ff7ac6',
-    blurb:
-      'A demand-forecasting model that predicts grocery sales from store, product and temporal signals.',
-    highlights: [
-      'Gradient-boosted regression for seasonal demand forecasting',
-      'Feature engineering across store, product & temporal attributes',
-      'Multi-page Streamlit app for real-time sales prediction',
-      'Built with Pandas & Scikit-Learn data pipelines',
-    ],
-    stack: ['Scikit-Learn', 'Pandas', 'Plotly', 'Streamlit'],
-    link: 'https://github.com/AyushDas4890/Grocery-sales-predictor',
-  },
-  {
     id: 'carbon-footprint',
     title: 'Carbon Footprint Generator',
     period: 'Apr 2026',
