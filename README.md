@@ -1,36 +1,72 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Ayush Das — AI/ML Engineer Portfolio
 
-## Getting Started
+<div align="center">
 
-First, run the development server:
+[![Vercel Deployment](https://img.shields.io/badge/Deploy-Vercel-black?style=for-the-badge&logo=vercel&logoColor=white)](https://portfolio-website-zeta-topaz-84.vercel.app/)
+[![GitHub Pages Deployment](https://img.shields.io/badge/Deploy-GitHub_Pages-blue?style=for-the-badge&logo=github&logoColor=white)](https://AyushDas4890.github.io/Portfolio-Website/)
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+---
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+A premium, interactive, and editorial "aurora" portfolio showcasing end-to-end AI/ML pipelines, NLP systems, and generative applications.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+[Live Vercel Site](https://portfolio-website-zeta-topaz-84.vercel.app/) &nbsp;•&nbsp; [GitHub Pages Mirror](https://AyushDas4890.github.io/Portfolio-Website/) &nbsp;•&nbsp; [Download Résumé](https://portfolio-website-zeta-topaz-84.vercel.app/Ayush_Das_Resume.docx)
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+</div>
 
-## Learn More
+## 🛠️ Tech Stack & Skills
 
-To learn more about Next.js, take a look at the following resources:
+<div align="left">
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- **Languages:** ![Python](https://img.shields.io/badge/Python-3776AB?style=flat-square&logo=python&logoColor=white) ![C++](https://img.shields.io/badge/C++-00599C?style=flat-square&logo=c%2B%2B&logoColor=white) ![C](https://img.shields.io/badge/C-A8B9CC?style=flat-square&logo=c&logoColor=black) ![SQL](https://img.shields.io/badge/SQL-4479A1?style=flat-square&logo=postgresql&logoColor=white) ![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=flat-square&logo=javascript&logoColor=black)
+- **AI / Machine Learning:** ![PyTorch](https://img.shields.io/badge/PyTorch-EE4C2C?style=flat-square&logo=pytorch&logoColor=white) ![TensorFlow](https://img.shields.io/badge/TensorFlow-FF6F00?style=flat-square&logo=tensorflow&logoColor=white) ![Scikit-Learn](https://img.shields.io/badge/Scikit--Learn-F7931E?style=flat-square&logo=scikit-learn&logoColor=white) ![XGBoost](https://img.shields.io/badge/XGBoost-1E8CFF?style=flat-square) ![Pandas](https://img.shields.io/badge/Pandas-150458?style=flat-square&logo=pandas&logoColor=white)
+- **NLP & LLMs:** ![Transformers](https://img.shields.io/badge/Hugging_Face_Transformers-FFD21E?style=flat-square&logo=huggingface&logoColor=black) `DeBERTa-v3` `LangChain` `LangGraph (Multi-Agent)`
+- **Frameworks & DBs:** ![FastAPI](https://img.shields.io/badge/FastAPI-009688?style=flat-square&logo=fastapi&logoColor=white) ![Streamlit](https://img.shields.io/badge/Streamlit-FF4B4B?style=flat-square&logo=streamlit&logoColor=white) `ChromaDB` `Git/GitHub`
+- **Frontend / Styling:** ![React](https://img.shields.io/badge/React-61DAFB?style=flat-square&logo=react&logoColor=black) ![Vite](https://img.shields.io/badge/Vite-646CFF?style=flat-square&logo=vite&logoColor=white) ![Framer Motion](https://img.shields.io/badge/Framer_Motion-0055FF?style=flat-square&logo=framer&logoColor=white)
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+</div>
 
-## Deploy on Vercel
+---
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## 🚀 Selected Work & Pipelines
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+### 🤖 1. AI Research Assistant Pipeline
+*An autonomous multi-agent system that researches any topic end-to-end—and remembers context across runs.*
+*   **Agent Architecture:** Built using a 5-agent **LangGraph StateGraph** mapping out plan → search → read → critique → write loops.
+*   **Self-Correction:** Critic evaluation checks findings and automatically triggers extra search cycles on coverage gaps.
+*   **Memory Depth:** Uses local graph states combined with **ChromaDB** vector stores.
+*   **API/UX:** FastAPI backend streaming live progress to a Streamlit front end.
+*   [View Repository](https://github.com/AyushDas4890/AI-Research-Assistant-Pipeline)
+
+### ⚖️ 2. Legal Clause Conflict Resolver
+*An end-to-end Legal NLP pipeline that automatically detects contradictions across contracts.*
+*   **Model:** Fine-tuned `DeBERTa-v3-large` for contradiction detection.
+*   **Performance:** Achieved **87% validation accuracy** through custom threshold tuning.
+*   **XAI:** Incorporated cross-attention heatmaps for extracting highlight clauses.
+*   [View Repository](https://github.com/AyushDas4890/Legal-Conflict-Resolver)
+
+---
+
+## 💻 Local Setup & Development
+
+To test the interactive components (such as custom smooth scrolling, the dynamic custom cursor, and the `Ctrl+K` command palette panel) locally:
+
+1. Clone the project files:
+   ```bash
+   git clone https://github.com/AyushDas4890/Portfolio-Website.git
+   cd Portfolio-Website
+   ```
+2. Install npm packages:
+   ```bash
+   npm install
+   ```
+3. Run the development server:
+   ```bash
+   npm run dev
+   ```
+
+---
+
+## ⚡ Deployment Automation
+
+- **GitHub Pages:** Runs automatically via `npm run deploy` to publish the output directory `/dist` directly to the `gh-pages` branch.
+- **Vercel Integration:** Configured with continuous integration (CI) linking the repository. Every push to the `main` branch immediately triggers a production build.
