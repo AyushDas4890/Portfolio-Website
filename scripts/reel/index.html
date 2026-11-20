@@ -1,0 +1,176 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>Showreel composition</title>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&family=Patrick+Hand&family=Fraunces:ital,opsz,wght@0,9..144,400..900;1,9..144,400..900&family=Space+Grotesk:wght@500;700&family=Rubik+Dirt&family=Inter+Tight:wght@500;700&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet" />
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body { width: 1600px; height: 900px; background: #0b0b0b; overflow: hidden; }
+  .shot { position: absolute; inset: 0; display: none; overflow: hidden; }
+  .shot.on { display: block; }
+  .shot:not(.on) { display: none !important; }
+  .shot.on.type, .shot.on.island, .shot.on.mosaic { display: grid; }
+  .shot video, .shot img.full { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: top center; }
+  .push { animation: push var(--d) cubic-bezier(.2,.7,.2,1) both; }
+  @keyframes push { from { transform: scale(1.14); } to { transform: scale(1); } }
+  .drift { animation: drift var(--d) linear both; }
+  @keyframes drift { from { transform: scale(1.02) translateY(0); } to { transform: scale(1.1) translateY(-2%); } }
+  .type { display: grid; place-items: center; text-align: center; }
+  .line { display: block; overflow: hidden; line-height: 1; padding: 0.06em 0; }
+  .line > span { display: inline-block; transform: translateY(110%); animation: rise .55s cubic-bezier(.2,.8,.2,1) forwards; animation-delay: var(--i); }
+  @keyframes rise { to { transform: none; } }
+  .label { position: absolute; left: 36px; bottom: 32px; font: 500 15px/1 'JetBrains Mono', monospace; letter-spacing: .1em; color: #fff;
+    background: rgba(11,11,11,.72); padding: 10px 14px; border-radius: 999px; text-transform: uppercase; }
+  .wipe { position: absolute; inset: 0; background: var(--c); transform-origin: left; animation: wipe .45s cubic-bezier(.7,0,.2,1) forwards; }
+  @keyframes wipe { from { transform: scaleX(1); } to { transform: scaleX(0); transform-origin: right; } }
+  .mosaic { display: grid; grid-template-columns: repeat(3, 1fr); grid-template-rows: repeat(2, 1fr); gap: 10px; padding: 10px; background: #0b0b0b; }
+  .mosaic > div { position: relative; overflow: hidden; border-radius: 14px; animation: tile .6s cubic-bezier(.2,.8,.2,1) both; animation-delay: var(--i); }
+  .mosaic video, .mosaic img { width: 100%; height: 100%; object-fit: cover; object-position: top center; }
+  @keyframes tile { from { transform: scale(.6); opacity: 0; } to { transform: none; opacity: 1; } }
+  .island { display: grid; place-items: center; background: radial-gradient(120% 90% at 50% 0%, #2a0d12 0%, #0b0b0b 60%); }
+  .island img { width: 66%; border-radius: 40px; animation: spring 0.9s cubic-bezier(.3,1.6,.4,1) both; box-shadow: 0 30px 80px rgba(215,38,61,.25); }
+  @keyframes spring { from { transform: scale(.25, .12); opacity: .4; } to { transform: none; opacity: 1; } }
+</style>
+</head>
+<body>
+<div id="stage"></div>
+<script>
+const M = '/public/media/'
+const SHOTS = [
+  { kind: 'type', d: 1500, bg: '#0b0b0b', fg: '#f2f1ee', font: "900 230px/0.86 'Archivo'", wdth: 125, lines: ['AYUSH', 'DAS'] },
+  { kind: 'clip', d: 1700, src: M + 'relay/landing.mp4', at: 0.4, label: '01 · Relay', wipe: '#F9E3A0' },
+  { kind: 'type', d: 950, bg: '#F9E3A0', fg: '#1b1b1b', font: "400 150px/0.95 'Patrick Hand'", lines: ['team chat that', 'talks back'] },
+  { kind: 'clip', d: 1500, src: M + 'relay/landing.mp4', at: 3.8, label: '01 · Relay' },
+  { kind: 'clip', d: 2000, src: M + 'c4future/scene.mp4', at: 1.2, label: '02 · C4Future', wipe: '#2B3A30', anim: 'drift' },
+  { kind: 'type', d: 950, bg: '#2B3A30', fg: '#EBEEE7', font: "400 170px/0.95 'Fraunces'", lines: ['the hidden', '<i style="color:#E07A50">number.</i>'] },
+  { kind: 'clip', d: 1800, src: M + 'c4future/calc.mp4', at: 9.5, label: '02 · 8.46 kg CO₂e' },
+  { kind: 'clip', d: 1700, src: M + 'cancer-tf/loop.mp4', at: 0.5, label: '03 · Cancer TF Atlas', wipe: '#07101F' },
+  { kind: 'type', d: 900, bg: '#07101F', fg: '#FFD23F', font: "700 210px/0.9 'Space Grotesk'", lines: ['98.76%'] },
+  { kind: 'clip', d: 1700, src: M + 'fruit/loop.mp4', at: 0.3, label: '04 · Ripe or Not', wipe: '#EC0B9C' },
+  { kind: 'type', d: 900, bg: '#EC0B9C', fg: '#FBF6EE', font: "800 170px/0.9 'Fraunces'", lines: ['ripe', 'or not?'] },
+  { kind: 'island', d: 1400, src: M + 'dynamic-island/island-spider.svg', label: '05 · Dynamic Island' },
+  { kind: 'type', d: 900, bg: '#d9d9d6', fg: '#111', font: "400 150px/0.95 'Rubik Dirt'", lines: ['Dynamic', 'Island'] },
+  { kind: 'image', d: 1500, src: M + 'research-assistant/webui.jpg', label: '06 · ResearchAI', wipe: '#8B7CFF' },
+  { kind: 'type', d: 950, bg: '#0B0C10', fg: '#E8ECF2', font: "700 150px/0.95 'Inter Tight'", lines: ['five agents.', '<span style="color:#8B7CFF">one report.</span>'] },
+  { kind: 'mosaic', d: 2200, tiles: [
+    { v: M + 'relay/landing.mp4', at: 4 }, { v: M + 'c4future/scene.mp4', at: 3.5 }, { v: M + 'cancer-tf/loop.mp4', at: 4 },
+    { v: M + 'fruit/loop.mp4', at: 2 }, { i: M + 'dynamic-island/island-hero.jpg' }, { v: M + 'c4future/calc.mp4', at: 12 } ] },
+  { kind: 'type', d: 1900, bg: '#0b0b0b', fg: '#f2f1ee', font: "900 150px/0.9 'Archivo'", wdth: 125, lines: ['AI SYSTEMS', 'THAT SHIP.'] },
+]
+
+const stage = document.getElementById('stage')
+const els = []
+
+function typeShot(s) {
+  const el = document.createElement('div')
+  el.className = 'shot type'
+  el.style.background = s.bg
+  const box = document.createElement('div')
+  box.style.cssText = `font:${s.font};color:${s.fg};${s.wdth ? `font-variation-settings:'wdth' ${s.wdth};` : ''}letter-spacing:-0.02em`
+  s.lines.forEach((t, li) => {
+    const line = document.createElement('span'); line.className = 'line'
+    const w = document.createElement('span'); w.innerHTML = t; w.style.setProperty('--i', `${li * 0.08}s`)
+    line.appendChild(w); box.appendChild(line)
+  })
+  el.appendChild(box)
+  return el
+}
+
+for (const s of SHOTS) {
+  let el
+  if (s.kind === 'type') el = typeShot(s)
+  else if (s.kind === 'mosaic') {
+    el = document.createElement('div'); el.className = 'shot mosaic'
+    s.tiles.forEach((t, i) => {
+      const cell = document.createElement('div'); cell.style.setProperty('--i', `${i * 0.06}s`)
+      if (t.v) { const v = document.createElement('video'); v.src = t.v; v.muted = true; v.preload = 'auto'; v.dataset.at = t.at; v.dataset.key = `s${SHOTS.indexOf(s)}t${i}`; cell.appendChild(v) }
+      else { const im = document.createElement('img'); im.src = t.i; cell.appendChild(im) }
+      el.appendChild(cell)
+    })
+  } else if (s.kind === 'island') {
+    el = document.createElement('div'); el.className = 'shot island'
+    const im = document.createElement('img'); im.src = s.src; el.appendChild(im)
+  } else {
+    el = document.createElement('div'); el.className = 'shot'
+    let media
+    if (s.kind === 'clip') { media = document.createElement('video'); media.src = s.src; media.muted = true; media.preload = 'auto'; media.dataset.at = s.at; media.dataset.key = `s${SHOTS.indexOf(s)}` }
+    else { media = document.createElement('img'); media.src = s.src; media.className = 'full' }
+    media.classList.add(s.anim || 'push')
+    media.style.setProperty('--d', `${s.d}ms`)
+    el.appendChild(media)
+  }
+  if (s.label) { const l = document.createElement('div'); l.className = 'label'; l.textContent = s.label; el.appendChild(l) }
+  if (s.wipe) { const w = document.createElement('div'); w.className = 'wipe'; w.style.setProperty('--c', s.wipe); el.appendChild(w) }
+  stage.appendChild(el)
+  els.push(el)
+}
+
+const vids = [...document.querySelectorAll('video')]
+const seekAll = () => Promise.all(vids.map((v) => new Promise((res) => {
+  const go = () => { v.currentTime = Number(v.dataset.at || 0); v.addEventListener('seeked', res, { once: true }) }
+  if (v.readyState >= 1) go(); else v.addEventListener('loadedmetadata', go, { once: true })
+})))
+
+async function run() {
+  await document.fonts.ready
+  await seekAll()
+  await new Promise((r) => setTimeout(r, 800))
+  window.__reelStart = performance.now()
+  console.log('REEL_START')
+  for (let i = 0; i < SHOTS.length; i++) {
+    els.forEach((e) => e.classList.remove('on'))
+    const el = els[i]
+    // Restart CSS animations for this shot.
+    el.querySelectorAll('*').forEach((n) => { n.style.animation = 'none'; void n.offsetWidth; n.style.animation = '' })
+    el.classList.add('on')
+    el.querySelectorAll('video').forEach((v) => v.play())
+    await new Promise((r) => setTimeout(r, SHOTS[i].d))
+    el.querySelectorAll('video').forEach((v) => v.pause())
+  }
+  console.log('REEL_END')
+  window.__reelDone = true
+}
+// Deterministic frame rendering: the renderer calls renderAt(ms) for every frame,
+// so motion is perfectly even no matter how slow each frame is to produce.
+const starts = []
+{ let acc = 0; for (const s of SHOTS) { starts.push(acc); acc += s.d } window.__reelTotal = acc }
+let current = -1
+window.reelReady = async () => { await document.fonts.ready; return window.__reelTotal }
+window.reelClips = () => SHOTS.flatMap((s, i) => s.kind === 'clip' ? [{ key: `s${i}`, src: s.src, at: s.at, d: s.d, w: 1600 }] : s.kind === 'mosaic' ? s.tiles.map((t, k) => t.v ? { key: `s${i}t${k}`, src: t.v, at: t.at, d: s.d, w: 640 } : null).filter(Boolean) : [])
+window.renderAt = async (t) => {
+  let i = starts.length - 1
+  while (i > 0 && starts[i] > t) i--
+  const local = t - starts[i]
+  const el = els[i]
+  if (i !== current) {
+    els.forEach((e) => e.classList.remove('on'))
+    el.classList.add('on')
+    current = i
+  }
+  el.getAnimations({ subtree: true }).forEach((a) => { a.pause(); a.currentTime = local })
+  // Frame-sequence mode: each video is replaced by an <img> showing the exact pre-extracted frame.
+  const vs = [...el.querySelectorAll('video')]
+  await Promise.all(vs.map(async (v) => {
+    let img = v.nextElementSibling && v.nextElementSibling.dataset.seq ? v.nextElementSibling : null
+    if (!img) {
+      img = document.createElement('img')
+      img.dataset.seq = v.dataset.key
+      img.className = v.className
+      img.style.cssText = v.style.cssText
+      img.style.width = '100%'; img.style.height = '100%'; img.style.objectFit = 'cover'; img.style.objectPosition = 'top center'
+      if (v.closest('.mosaic')) { img.style.position = 'static' } else { img.style.position = 'absolute'; img.style.inset = '0' }
+      v.after(img); v.style.display = 'none'
+      img.getAnimations().forEach((a) => a.cancel())
+    }
+    const n = Math.floor((local / 1000) * 30) + 1
+    img.src = `/scripts/.raw/reelsrc/${v.dataset.key}/f${String(n).padStart(4, '0')}.jpg`
+    try { await img.decode() } catch {}
+  }))
+  el.getAnimations({ subtree: true }).forEach((a) => { a.pause(); a.currentTime = local })
+  await new Promise((r) => requestAnimationFrame(() => requestAnimationFrame(r)))
+}
+if (!location.search.includes('render')) run()
+</script>
+</body>
+</html>

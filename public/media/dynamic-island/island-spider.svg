@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1010 200" role="img" aria-label="Dynamic Island resting with the Spider companion">
+  <defs>
+    <radialGradient id="glow" cx="50%" cy="50%" r="50%">
+      <stop offset="0" stop-color="#ff8a1f"/>
+      <stop offset="1" stop-color="#ff8a1f" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect x="3" y="3" width="1004" height="194" rx="97" fill="#000" stroke="#2a2f6e" stroke-width="4"/>
+  <g transform="translate(505 100)" fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round">
+    <!-- thread -->
+    <path d="M0 -92 V-30" stroke-width="3" opacity=".75"/>
+    <!-- legs, left -->
+    <path d="M-14 -8 L-40 -36 L-62 -22" stroke-width="7"/>
+    <path d="M-16 2 L-48 -10 L-70 6" stroke-width="7"/>
+    <path d="M-16 12 L-46 22 L-64 46" stroke-width="7"/>
+    <path d="M-12 20 L-32 44 L-40 70" stroke-width="7"/>
+    <!-- legs, right -->
+    <path d="M14 -8 L40 -36 L62 -22" stroke-width="7"/>
+    <path d="M16 2 L48 -10 L70 6" stroke-width="7"/>
+    <path d="M16 12 L46 22 L64 46" stroke-width="7"/>
+    <path d="M12 20 L32 44 L40 70" stroke-width="7"/>
+  </g>
+  <g transform="translate(505 100)" fill="#fff">
+    <ellipse cx="0" cy="-16" rx="15" ry="14"/>
+    <ellipse cx="0" cy="18" rx="24" ry="27"/>
+    <circle cx="-6" cy="-18" r="3.4" fill="#000"/>
+    <circle cx="6" cy="-18" r="3.4" fill="#000"/>
+  </g>
+  <circle cx="902" cy="100" r="34" fill="url(#glow)" opacity=".55"/>
+  <circle cx="902" cy="100" r="13" fill="#ff8a1f"/>
+</svg>

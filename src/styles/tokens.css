@@ -1,0 +1,45 @@
+:root {
+  --paper: #f1f0ec;
+  --ink: #070708;
+  --paper-2: #e6e4df;
+  --ink-2: #161616;
+
+  /* Project palette, set per case study by <ProjectTheme>. */
+  --p-bg: var(--ink);
+  --p-fg: var(--paper);
+  --p-accent: #ff5a36;
+  --p-alt: #7aa2ff;
+  --p-heading: 'Instrument Serif', serif;
+
+  /* Current tone. Sections switch it as they pass mid-viewport. */
+  --bg: var(--paper);
+  --fg: var(--ink);
+  --muted: color-mix(in srgb, var(--fg) 58%, var(--bg));
+  --line: color-mix(in srgb, var(--fg) 14%, var(--bg));
+  --chip: color-mix(in srgb, var(--fg) 8%, var(--bg));
+  --accent: #ff5a36;
+
+  --wordmark: 'Archivo', 'Arial Black', sans-serif;
+  --serif: 'Instrument Serif', 'Times New Roman', serif;
+  --sans: 'Instrument Sans', 'Inter Tight', system-ui, sans-serif;
+  --mono: 'JetBrains Mono', ui-monospace, monospace;
+
+  --gutter: clamp(16px, 3.3vw, 48px);
+  --radius: 16px;
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --tone-ms: 700ms;
+}
+
+html[data-tone='ink'] {
+  --bg: var(--ink);
+  --fg: var(--paper);
+}
+html[data-tone='project'] {
+  --bg: var(--p-bg);
+  --fg: var(--p-fg);
+  --accent: var(--p-accent);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root { --tone-ms: 0ms; }
+}
