@@ -184,11 +184,24 @@ function Work() {
   )
 }
 
+function Portrait() {
+  const [ok, setOk] = useState(true)
+  if (!ok) return null
+  return (
+    <figure className="portrait">
+      <img src="/media/me.jpg" alt="Ayush Das" loading="lazy" onError={() => setOk(false)} />
+    </figure>
+  )
+}
+
 function About() {
   return (
     <Section tone="ink" id="about" className="about">
       <div className="about-grid">
-        <SplitText as="h2" swarm="About" className="serif-head" text="Models that ship, *not demos that stall.*" />
+        <div className="about-left">
+          <SplitText as="h2" swarm="About" className="serif-head" text="Models that ship, *not demos that stall.*" />
+          <Portrait />
+        </div>
         <Reveal delay={0.1} className="about-body">
           {profile.bio.map((b) => <p key={b}>{b}</p>)}
           <dl className="facts">
