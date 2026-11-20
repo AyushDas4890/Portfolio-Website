@@ -199,8 +199,8 @@ function About() {
     <Section tone="ink" id="about" className="about">
       <div className="about-grid">
         <div className="about-left">
-          <SplitText as="h2" swarm="About" className="serif-head" text="Models that ship, *not demos that stall.*" />
           <Portrait />
+          <SplitText as="h2" swarm="About" className="serif-head" text="Models that ship, *not demos that stall.*" />
         </div>
         <Reveal delay={0.1} className="about-body">
           {profile.bio.map((b) => <p key={b}>{b}</p>)}
