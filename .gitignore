@@ -5,3 +5,5 @@ scripts/.shots
 scripts/.preview.log
 scripts/.inst
 scripts/.c4scan
+
+.vercel

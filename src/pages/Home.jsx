@@ -189,7 +189,7 @@ function Portrait() {
   if (!ok) return null
   return (
     <figure className="portrait">
-      <img src="/media/me.jpg" alt="Ayush Das" loading="lazy" onError={() => setOk(false)} />
+      <img src="/media/me.png" alt="Ayush Das" loading="lazy" onError={() => setOk(false)} />
     </figure>
   )
 }
