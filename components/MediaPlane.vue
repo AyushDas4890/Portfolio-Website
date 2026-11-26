@@ -18,6 +18,8 @@ const props = withDefaults(defineProps<{ src?: string | null; poster?: string | 
 const root = ref<HTMLElement | null>(null)
 const media = ref<HTMLImageElement | HTMLVideoElement | null>(null)
 const isVideo = computed(() => !!props.src && /\.(mp4|webm)$/i.test(props.src))
+// A clip without an explicit poster uses the still of the same name next to it (films/export.sh writes both).
+const posterSrc = computed(() => props.poster || (isVideo.value ? props.src!.replace(/\.(mp4|webm)$/i, '.jpg') : null))
 const shown = ref(false)
 let plane: MediaPlane | null = null
 let io: IntersectionObserver | null = null
@@ -61,7 +63,7 @@ const leave = () => plane && (plane.hoverTarget = 0)
       ref="media"
       class="media__src"
       :src="src!"
-      :poster="poster || undefined"
+      :poster="posterSrc || undefined"
       muted
       loop
       playsinline

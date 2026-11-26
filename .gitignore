@@ -10,3 +10,10 @@ scripts/.c4scan
 .output
 .nuxt
 .data
+
+# film renders (sources in films/ are kept; exports live in public/media/films)
+films/node_modules/
+films/*/out/
+films/*/stills/
+films/*/tmp/
+films/_*.jpg

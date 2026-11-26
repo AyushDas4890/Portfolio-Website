@@ -1,5 +1,9 @@
 // Case-study content. Facts and numbers come from each project's README and live site.
-const m = (slug, file) => `/media/${slug}/${file}`
+// Every slot shows a frame or clip of the project's own motion film (films/<slug>, rendered by films/export.sh).
+// Files keep the names of the screens they stand for; PNG screens become JPEG plates.
+const m = (slug, file) => `/media/films/${slug}/${file.replace(/\.png$/, '.jpg')}`
+// Screen slots play a 6 s motion clip of the plate; its still (same name, .jpg) is the poster.
+const v = (slug, file) => m(slug, file).replace(/\.jpg$/, '.mp4')
 
 export const projects = [
   {
@@ -29,15 +33,15 @@ export const projects = [
         { src: m('relay', 'transition.mp4'), poster: m('relay', 'poster.jpg'), caption: 'Home to sign-in: panels sweep across while the page changes underneath.' },
       ],
       screens: [
-        { src: m('relay', 'landing-1.jpg'), caption: 'Landing: "Team management, minus the meetings", with a live demo chat.' },
-        { src: m('relay', 'landing-2.jpg'), caption: 'How a team runs on Relay: standup runs itself in a thread.' },
-        { src: m('relay', 'landing-4.jpg'), caption: 'Pick your team: Engineering, Design, People and Support setups.' },
-        { src: m('relay', 'landing-6.jpg'), caption: 'Your Monday starts in three steps: create the workspace, invite the team, let the bot run standup.' },
-        { src: m('relay', 'signin.jpg'), caption: 'Earlier app version · Sign-in: a 3D stage that tilts toward the cursor.' },
-        { src: m('relay', 'app-channel.jpg'), caption: 'Earlier app version · A channel with threads, reactions, pins and the Relay Bot.' },
-        { src: m('relay', 'app-canvas.jpg'), caption: 'Earlier app version · Canvases: a page in every channel for plans and decisions.' },
-        { src: m('relay', 'app-list.jpg'), caption: 'Earlier app version · Lists: a board by status, assignee and due date.' },
-        { src: m('relay', 'app-admin.jpg'), caption: 'Earlier app version · Admin console with analytics, audit log and flagged content.' },
+        { src: v('relay', 'landing-1.jpg'), caption: 'Landing: "Team management, minus the meetings", with a live demo chat.' },
+        { src: v('relay', 'landing-2.jpg'), caption: 'How a team runs on Relay: standup runs itself in a thread.' },
+        { src: v('relay', 'landing-4.jpg'), caption: 'Pick your team: Engineering, Design, People and Support setups.' },
+        { src: v('relay', 'landing-6.jpg'), caption: 'Your Monday starts in three steps: create the workspace, invite the team, let the bot run standup.' },
+        { src: v('relay', 'signin.jpg'), caption: 'Earlier app version · Sign-in: a 3D stage that tilts toward the cursor.' },
+        { src: v('relay', 'app-channel.jpg'), caption: 'Earlier app version · A channel with threads, reactions, pins and the Relay Bot.' },
+        { src: v('relay', 'app-canvas.jpg'), caption: 'Earlier app version · Canvases: a page in every channel for plans and decisions.' },
+        { src: v('relay', 'app-list.jpg'), caption: 'Earlier app version · Lists: a board by status, assignee and due date.' },
+        { src: v('relay', 'app-admin.jpg'), caption: 'Earlier app version · Admin console with analytics, audit log and flagged content.' },
       ],
     },
     problem:
@@ -51,10 +55,10 @@ export const projects = [
       { title: 'Compliance-minded orgs', body: 'Retention policy, legal holds, information barriers and a full JSON export for teams that must keep records.' },
     ],
     features: [
-      { title: 'Huddles with voice and screen share', body: 'Peer-to-peer over WebRTC in a mesh of up to 6 people. The server only relays the connection setup; media never passes through it.', screen: m('relay', 'tour-huddles.jpg') },
-      { title: 'Workflow Builder', body: 'Keyword, join and scheduled triggers with conditional branching and starter templates, so onboarding and standups run themselves.', screen: m('relay', 'tour-workflows.jpg') },
-      { title: 'Search that answers', body: 'Ctrl+K search across everything you can see. A search that ends in "?" returns a best answer.', screen: m('relay', 'tour-search.jpg') },
-      { title: 'Admin and compliance', body: 'Roles from owner to guest, admins-only posting, analytics, audit log, retention, legal holds and information barriers.', screen: m('relay', 'app-admin.jpg') },
+      { title: 'Huddles with voice and screen share', body: 'Peer-to-peer over WebRTC in a mesh of up to 6 people. The server only relays the connection setup; media never passes through it.', screen: v('relay', 'tour-huddles.jpg') },
+      { title: 'Workflow Builder', body: 'Keyword, join and scheduled triggers with conditional branching and starter templates, so onboarding and standups run themselves.', screen: v('relay', 'tour-workflows.jpg') },
+      { title: 'Search that answers', body: 'Ctrl+K search across everything you can see. A search that ends in "?" returns a best answer.', screen: v('relay', 'tour-search.jpg') },
+      { title: 'Admin and compliance', body: 'Roles from owner to guest, admins-only posting, analytics, audit log, retention, legal holds and information barriers.', screen: v('relay', 'app-admin.jpg') },
     ],
     architecture: {
       caption: 'Browsers on Vercel talk to a Node server on Render over WebSockets. Supabase handles sign-in, state and file storage. Huddle audio and screens go browser to browser.',
@@ -102,18 +106,18 @@ export const projects = [
         { src: m('c4future', 'loop.mp4'), poster: m('c4future', 'loop-poster.jpg'), caption: 'The landing essay, scroll by scroll: the hidden number, why it matters, and the model in numbers.' },
       ],
       screens: [
-        { src: m('c4future', 'screen-1.jpg'), caption: 'Opening: "The hidden number". The site is a scroll-told essay before it is a tool.' },
-        { src: m('c4future', 'screen-5.jpg'), caption: 'Why it matters: a cotton shirt flown out of Shanghai can emit more in the air than in the field.' },
-        { src: m('c4future', 'calc-form.jpg'), caption: 'The calculator: five inputs, one honest number. Here a cotton T-shirt shipped by sea.' },
-        { src: m('c4future', 'result-1.jpg'), caption: 'The result: 8.46 kg CO₂e with a 90% interval and a luggage-tag grade.' },
-        { src: m('c4future', 'result-2.jpg'), caption: 'Breakdown by lifecycle stage, and the features that pushed the estimate up or down.' },
-        { src: m('c4future', 'result-3.jpg'), caption: 'In everyday terms: 33.8 km driven, 1,057 phone charges, 14.1 washing-machine loads.' },
-        { src: m('c4future', 'result-4.jpg'), caption: 'How to reduce it: change the material, the freight, the grid, or close the loop.' },
-        { src: m('c4future', 'compare.jpg'), caption: 'Compare: two products through the same model, with the lighter option and the gap.' },
-        { src: m('c4future', 'decompose.jpg'), caption: 'Decompose: a sentence becomes a bill of materials, each part priced in CO₂e.' },
-        { src: m('c4future', 'insights.jpg'), caption: 'Insights: benchmarks and uncertainty. R² 0.291 held out, MAE 13.28 kg, 91.2% coverage.' },
-        { src: m('c4future', 'advisor.jpg'), caption: 'Advisor: questions answered strictly from indexed LCA and IPCC sources, with citations.' },
-        { src: m('c4future', 'screen-3.jpg'), caption: 'The model in numbers: 14,000+ rows, 91.2% coverage, 35 materials, 4 freight modes.' },
+        { src: v('c4future', 'screen-1.jpg'), caption: 'Opening: "The hidden number". The site is a scroll-told essay before it is a tool.' },
+        { src: v('c4future', 'screen-5.jpg'), caption: 'Why it matters: a cotton shirt flown out of Shanghai can emit more in the air than in the field.' },
+        { src: v('c4future', 'calc-form.jpg'), caption: 'The calculator: five inputs, one honest number. Here a cotton T-shirt shipped by sea.' },
+        { src: v('c4future', 'result-1.jpg'), caption: 'The result: 8.46 kg CO₂e with a 90% interval and a luggage-tag grade.' },
+        { src: v('c4future', 'result-2.jpg'), caption: 'Breakdown by lifecycle stage, and the features that pushed the estimate up or down.' },
+        { src: v('c4future', 'result-3.jpg'), caption: 'In everyday terms: 33.8 km driven, 1,057 phone charges, 14.1 washing-machine loads.' },
+        { src: v('c4future', 'result-4.jpg'), caption: 'How to reduce it: change the material, the freight, the grid, or close the loop.' },
+        { src: v('c4future', 'compare.jpg'), caption: 'Compare: two products through the same model, with the lighter option and the gap.' },
+        { src: v('c4future', 'decompose.jpg'), caption: 'Decompose: a sentence becomes a bill of materials, each part priced in CO₂e.' },
+        { src: v('c4future', 'insights.jpg'), caption: 'Insights: benchmarks and uncertainty. R² 0.291 held out, MAE 13.28 kg, 91.2% coverage.' },
+        { src: v('c4future', 'advisor.jpg'), caption: 'Advisor: questions answered strictly from indexed LCA and IPCC sources, with citations.' },
+        { src: v('c4future', 'screen-3.jpg'), caption: 'The model in numbers: 14,000+ rows, 91.2% coverage, 35 materials, 4 freight modes.' },
       ],
     },
     problem:
@@ -127,10 +131,10 @@ export const projects = [
       { title: 'Asking why', body: 'The advisor answers questions grounded in LCA and IPCC sources, with citations, and refuses out-of-scope ones.' },
     ],
     features: [
-      { title: 'ML predictor with honest error bars', body: 'XGBoost trained on Agribalyse, Poore and DEFRA data. Conformal prediction gives a 90% interval that held 91.2% coverage on held-out data.', screen: m('c4future', 'result-1.jpg') },
-      { title: 'Explainable breakdown', body: 'TreeSHAP shows how much each input (material, country, freight mode, distance, end of life) pushed the estimate up or down.', screen: m('c4future', 'result-2.jpg') },
-      { title: 'RAG sustainability advisor', body: 'LangChain + ChromaDB + gpt-4o-mini with cross-encoder reranking. Answers stream with citations at about $0.0002 per chat.', screen: m('c4future', 'advisor.jpg') },
-      { title: 'Agentic decomposer', body: 'An LLM in JSON mode turns a product name into a schema-validated bill of materials, then the ML model scores each part.', screen: m('c4future', 'decompose.jpg') },
+      { title: 'ML predictor with honest error bars', body: 'XGBoost trained on Agribalyse, Poore and DEFRA data. Conformal prediction gives a 90% interval that held 91.2% coverage on held-out data.', screen: v('c4future', 'result-1.jpg') },
+      { title: 'Explainable breakdown', body: 'TreeSHAP shows how much each input (material, country, freight mode, distance, end of life) pushed the estimate up or down.', screen: v('c4future', 'result-2.jpg') },
+      { title: 'RAG sustainability advisor', body: 'LangChain + ChromaDB + gpt-4o-mini with cross-encoder reranking. Answers stream with citations at about $0.0002 per chat.', screen: v('c4future', 'advisor.jpg') },
+      { title: 'Agentic decomposer', body: 'An LLM in JSON mode turns a product name into a schema-validated bill of materials, then the ML model scores each part.', screen: v('c4future', 'decompose.jpg') },
     ],
     architecture: {
       caption: 'One Django + React app with three engines, packaged in Docker and hosted on Hugging Face Spaces.',
@@ -170,14 +174,14 @@ export const projects = [
     repo: 'https://github.com/AyushDas4890/AI-Research-Assistant-Pipeline',
     role: 'Design, build and deploy',
     media: {
-      loop: null,
-      poster: m('research-assistant', 'webui.jpg'),
+      loop: m('research-assistant', 'film.mp4'),
+      poster: m('research-assistant', 'film-poster.jpg'),
       ratio: '16 / 10',
       reels: [],
       screens: [
-        { src: m('research-assistant', 'webui.jpg'), caption: 'The FastAPI web UI: ask a question, watch five agents stream their progress live.' },
-        { src: m('research-assistant', 'screen-1.jpg'), caption: 'The Streamlit app: the agent graph beside the research topic, with past sessions from memory.' },
-        { src: m('research-assistant', 'report.png'), caption: 'The output: a structured report with an executive summary and key findings.' },
+        { src: v('research-assistant', 'webui.jpg'), caption: 'The FastAPI web UI: ask a question, watch five agents stream their progress live.' },
+        { src: v('research-assistant', 'screen-1.jpg'), caption: 'The Streamlit app: the agent graph beside the research topic, with past sessions from memory.' },
+        { src: v('research-assistant', 'report.png'), caption: 'The output: a structured report with an executive summary and key findings.' },
       ],
     },
     problem:
@@ -191,10 +195,10 @@ export const projects = [
       { title: 'Ad QA', body: 'A separate batch pipeline screens ad creatives for broken links, image spec violations and policy risk.' },
     ],
     features: [
-      { title: 'Five-agent StateGraph', body: 'Planner, Searcher, Reader, Critic and Writer on a LangGraph StateGraph with typed state and conditional routing.', screen: m('research-assistant', 'screen-1.jpg') },
-      { title: 'Self-correcting critic', body: 'If the Critic finds gaps and retry_count < 2, it routes back to the Searcher. Otherwise it hands over to the Writer.', screen: m('research-assistant', 'pipeline.png') },
-      { title: 'Dual-layer memory', body: 'Short-term graph state plus a long-term ChromaDB store with sentence-transformer embeddings, retrieved at the start of each run.', screen: m('research-assistant', 'report.png') },
-      { title: 'Live streaming and tracing', body: 'FastAPI streams each agent step over Server-Sent Events. LangSmith traces every tool call and routing decision.', screen: m('research-assistant', 'webui.jpg') },
+      { title: 'Five-agent StateGraph', body: 'Planner, Searcher, Reader, Critic and Writer on a LangGraph StateGraph with typed state and conditional routing.', screen: v('research-assistant', 'screen-1.jpg') },
+      { title: 'Self-correcting critic', body: 'If the Critic finds gaps and retry_count < 2, it routes back to the Searcher. Otherwise it hands over to the Writer.', screen: v('research-assistant', 'pipeline.png') },
+      { title: 'Dual-layer memory', body: 'Short-term graph state plus a long-term ChromaDB store with sentence-transformer embeddings, retrieved at the start of each run.', screen: v('research-assistant', 'report.png') },
+      { title: 'Live streaming and tracing', body: 'FastAPI streams each agent step over Server-Sent Events. LangSmith traces every tool call and routing decision.', screen: v('research-assistant', 'webui.jpg') },
     ],
     architecture: {
       caption: 'The Critic is the only agent that can send work backwards. Memory is read by the Planner and written by the Writer.',
@@ -239,10 +243,10 @@ export const projects = [
       ratio: '16 / 10',
       reels: [],
       screens: [
-        { src: m('cancer-tf', 'screen-1.jpg'), caption: 'The atlas: a 3D genome globe of TF hotspots by cancer type.' },
-        { src: m('cancer-tf', 'screen-3.jpg'), caption: 'Headline results and the cancer type breakdown across 801 samples.' },
-        { src: m('cancer-tf', 'screen-2.jpg'), caption: 'Live Patient Predictor: input an RNA-Seq profile, get the type and active TFs.' },
-        { src: m('cancer-tf', 'screen-4.jpg'), caption: 'Top transcription factors per type: BRCA, KIRC, LUAD, PRAD and COAD.' },
+        { src: v('cancer-tf', 'screen-1.jpg'), caption: 'The atlas: a 3D genome globe of TF hotspots by cancer type.' },
+        { src: v('cancer-tf', 'screen-3.jpg'), caption: 'Headline results and the cancer type breakdown across 801 samples.' },
+        { src: v('cancer-tf', 'screen-2.jpg'), caption: 'Live Patient Predictor: input an RNA-Seq profile, get the type and active TFs.' },
+        { src: v('cancer-tf', 'screen-4.jpg'), caption: 'Top transcription factors per type: BRCA, KIRC, LUAD, PRAD and COAD.' },
       ],
     },
     problem:
@@ -255,10 +259,10 @@ export const projects = [
       { title: 'Sample check', body: 'Load an RNA-Seq profile to predict its cancer type and see which genes are hyperactive.' },
     ],
     features: [
-      { title: 'Subtype classifier', body: 'An optimised Random Forest predicts BRCA, KIRC, COAD, LUAD or PRAD with 98.76% accuracy on the TCGA Pan-Cancer data.', screen: m('cancer-tf', 'screen-3.jpg') },
-      { title: 'TF discovery, independently validated', body: '19 lineage-specific TFs among the top 500 predictive genes, 3.36× more important than non-TF genes. The model blindly rediscovered known master regulators: HNF1B in kidney, GATA3 in breast and NKX2-1 in lung.', screen: m('cancer-tf', 'screen-4.jpg') },
-      { title: 'Live Patient Predictor', body: 'Paste an RNA-Seq profile to predict the cancer type and see which transcription factors are driving it.', screen: m('cancer-tf', 'screen-2.jpg') },
-      { title: '3D genome globe', body: 'Next.js, Three.js and Framer Motion render TF hotspots on an interactive globe.', screen: m('cancer-tf', 'screen-1.jpg') },
+      { title: 'Subtype classifier', body: 'An optimised Random Forest predicts BRCA, KIRC, COAD, LUAD or PRAD with 98.76% accuracy on the TCGA Pan-Cancer data.', screen: v('cancer-tf', 'screen-3.jpg') },
+      { title: 'TF discovery, independently validated', body: '19 lineage-specific TFs among the top 500 predictive genes, 3.36× more important than non-TF genes. The model blindly rediscovered known master regulators: HNF1B in kidney, GATA3 in breast and NKX2-1 in lung.', screen: v('cancer-tf', 'screen-4.jpg') },
+      { title: 'Live Patient Predictor', body: 'Paste an RNA-Seq profile to predict the cancer type and see which transcription factors are driving it.', screen: v('cancer-tf', 'screen-2.jpg') },
+      { title: '3D genome globe', body: 'Next.js, Three.js and Framer Motion render TF hotspots on an interactive globe.', screen: v('cancer-tf', 'screen-1.jpg') },
     ],
     architecture: {
       caption: 'A Python pipeline trains and ranks; the dashboard reads its results.',
@@ -299,18 +303,18 @@ export const projects = [
     repo: 'https://github.com/AyushDas4890/Dynamic_Island_for_Windows',
     role: 'Design, build and ship',
     media: {
-      loop: null,
+      loop: m('dynamic-island', 'film.mp4'),
       demo: 'island',
-      poster: m('dynamic-island', 'island-hero.jpg'),
+      poster: m('dynamic-island', 'film-poster.jpg'),
       ratio: '16 / 10',
       reels: [],
       screens: [
-        { src: m('dynamic-island', 'island-hero.jpg'), caption: 'At rest: a thin black pill at the top of the screen, with the Spider companion and a status dot.' },
-        { src: m('dynamic-island', 'home-spiderbot.jpg'), caption: 'The 1.3 home window: paper-grey and ink, Rubik Dirt headings and a spider swinging from its web.' },
-        { src: m('dynamic-island', 'settings.jpg'), caption: 'Pick your companion: Robo, Spider-Bot or Spider. Drag the island to any edge and it snaps.' },
-        { src: m('dynamic-island', 'now-playing.png'), caption: 'Now Playing: album art, waveform, progress and controls.' },
-        { src: m('dynamic-island', 'notification.png'), caption: 'Notifications arrive with the shape: the island grows, then the content fades in.' },
-        { src: m('dynamic-island', 'timer.png'), caption: 'Clock and one-tap timers.' },
+        { src: v('dynamic-island', 'island-hero.jpg'), caption: 'At rest: a thin black pill at the top of the screen, with the Spider companion and a status dot.' },
+        { src: v('dynamic-island', 'home-spiderbot.jpg'), caption: 'The 1.3 home window: paper-grey and ink, Rubik Dirt headings and a spider swinging from its web.' },
+        { src: v('dynamic-island', 'settings.jpg'), caption: 'Pick your companion: Robo, Spider-Bot or Spider. Drag the island to any edge and it snaps.' },
+        { src: v('dynamic-island', 'now-playing.png'), caption: 'Now Playing: album art, waveform, progress and controls.' },
+        { src: v('dynamic-island', 'notification.png'), caption: 'Notifications arrive with the shape: the island grows, then the content fades in.' },
+        { src: v('dynamic-island', 'timer.png'), caption: 'Clock and one-tap timers.' },
       ],
     },
     problem:
@@ -324,10 +328,10 @@ export const projects = [
       { title: 'Privacy at a glance', body: 'Green and orange dots show when the camera or microphone is in use.' },
     ],
     features: [
-      { title: 'Spring physics, not timed animations', body: 'Every change can be interrupted mid-flight and re-targeted from its current position and velocity. Content arrives with the shape.', screen: m('dynamic-island', 'now-playing.png') },
-      { title: 'Claude Code companion', body: 'The panel follows Claude Code live, glows orange while it works, blue when it needs you and green when done. An MCP server lets Claude notify you and ask yes/no questions.', screen: m('dynamic-island', 'island-hero.jpg') },
-      { title: 'Jarvis, on-device voice', body: 'openWakeWord for "hey jarvis", faster-whisper for speech, Kokoro for the voice, and Claude through Claude Code as the brain.', screen: m('dynamic-island', 'home-spiderbot.jpg') },
-      { title: 'Companions and drag-to-dock', body: 'Robo, Spider-Bot or Spider, each with moods: blinking, focused, curious, happy, in love, dizzy. Drop the island near any edge and it snaps.', screen: m('dynamic-island', 'settings.jpg') },
+      { title: 'Spring physics, not timed animations', body: 'Every change can be interrupted mid-flight and re-targeted from its current position and velocity. Content arrives with the shape.', screen: v('dynamic-island', 'now-playing.png') },
+      { title: 'Claude Code companion', body: 'The panel follows Claude Code live, glows orange while it works, blue when it needs you and green when done. An MCP server lets Claude notify you and ask yes/no questions.', screen: v('dynamic-island', 'island-hero.jpg') },
+      { title: 'Jarvis, on-device voice', body: 'openWakeWord for "hey jarvis", faster-whisper for speech, Kokoro for the voice, and Claude through Claude Code as the brain.', screen: v('dynamic-island', 'home-spiderbot.jpg') },
+      { title: 'Companions and drag-to-dock', body: 'Robo, Spider-Bot or Spider, each with moods: blinking, focused, curious, happy, in love, dizzy. Drop the island near any edge and it snaps.', screen: v('dynamic-island', 'settings.jpg') },
     ],
     architecture: {
       caption: 'A layered WPF window that never takes focus, fed by Windows system APIs and a local voice engine.',
@@ -374,12 +378,12 @@ export const projects = [
       ratio: '16 / 10',
       reels: [],
       screens: [
-        { src: m('fruit', 'result.jpg'), caption: 'A test photo the model never trained on, graded "partially ripe" on the ripeness ruler, with the three yes/no answers.' },
-        { src: m('fruit', 'idea.jpg'), caption: 'Order matters: softmax sees four unrelated boxes; ordinal regression asks three yes/no questions.' },
-        { src: m('fruit', 'pipeline.jpg'), caption: 'From photo to grade: 758 real photos, leak-free folds, augmentation, ordinal head, Grad-CAM.' },
-        { src: m('fruit', 'results.jpg'), caption: 'What the numbers say: small CNN vs ResNet18 + softmax vs ResNet18 + ordinal.' },
-        { src: m('fruit', 'look.jpg'), caption: 'Where does it look? Grad-CAM on one test image per fruit and grade.' },
-        { src: m('fruit', 'slides.jpg'), caption: 'The 14-slide deck that walks through the whole project.' },
+        { src: v('fruit', 'result.jpg'), caption: 'A test photo the model never trained on, graded "partially ripe" on the ripeness ruler, with the three yes/no answers.' },
+        { src: v('fruit', 'idea.jpg'), caption: 'Order matters: softmax sees four unrelated boxes; ordinal regression asks three yes/no questions.' },
+        { src: v('fruit', 'pipeline.jpg'), caption: 'From photo to grade: 758 real photos, leak-free folds, augmentation, ordinal head, Grad-CAM.' },
+        { src: v('fruit', 'results.jpg'), caption: 'What the numbers say: small CNN vs ResNet18 + softmax vs ResNet18 + ordinal.' },
+        { src: v('fruit', 'look.jpg'), caption: 'Where does it look? Grad-CAM on one test image per fruit and grade.' },
+        { src: v('fruit', 'slides.jpg'), caption: 'The 14-slide deck that walks through the whole project.' },
       ],
     },
     problem:
@@ -392,10 +396,10 @@ export const projects = [
       { title: 'Teaching ordinal ML', body: 'A clear, honest walkthrough of why order-aware models beat softmax on ordered labels.' },
     ],
     features: [
-      { title: 'Ordinal head (CORAL)', body: 'One shared score s = w · features with three learned thresholds. Predicted grade = number of yes answers above 0.5.', screen: m('fruit', 'idea.jpg') },
-      { title: 'Leak-free evaluation', body: 'Crops grouped by source photo, burst shots and perceptual hash into 159 groups, then 5-fold StratifiedGroupKFold. Every crop is tested once by a model that never saw it.', screen: m('fruit', 'pipeline.jpg') },
-      { title: 'Grad-CAM, in the browser', body: 'Written by hand with PyTorch hooks, then computed inside the ONNX graph without backprop. Matches PyTorch to within 1e-5.', screen: m('fruit', 'look.jpg') },
-      { title: 'Runs on your device', body: 'ONNX Runtime Web on a static Hugging Face Space. No server; the first prediction downloads about 90 MB of model files.', screen: m('fruit', 'result.jpg') },
+      { title: 'Ordinal head (CORAL)', body: 'One shared score s = w · features with three learned thresholds. Predicted grade = number of yes answers above 0.5.', screen: v('fruit', 'idea.jpg') },
+      { title: 'Leak-free evaluation', body: 'Crops grouped by source photo, burst shots and perceptual hash into 159 groups, then 5-fold StratifiedGroupKFold. Every crop is tested once by a model that never saw it.', screen: v('fruit', 'pipeline.jpg') },
+      { title: 'Grad-CAM, in the browser', body: 'Written by hand with PyTorch hooks, then computed inside the ONNX graph without backprop. Matches PyTorch to within 1e-5.', screen: v('fruit', 'look.jpg') },
+      { title: 'Runs on your device', body: 'ONNX Runtime Web on a static Hugging Face Space. No server; the first prediction downloads about 90 MB of model files.', screen: v('fruit', 'result.jpg') },
     ],
     architecture: {
       caption: 'Three models, five folds, three seeds: 45 runs, pooled over 924 crops.',

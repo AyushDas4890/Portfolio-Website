@@ -69,7 +69,10 @@ watch(list, async () => {
 
     <div class="preview" aria-hidden="true">
       <div v-for="p in projects" :key="p.slug" class="preview__item" :class="{ 'is-on': active === p.slug }">
-        <div class="preview__media"><img :src="p.media.poster" alt="" loading="lazy" /></div>
+        <div class="preview__media">
+          <video v-if="p.media.loop" :src="p.media.loop" :poster="p.media.poster" muted loop playsinline autoplay preload="metadata" />
+          <img v-else :src="p.media.poster" alt="" loading="lazy" />
+        </div>
         <p class="preview__cap ui">{{ p.services.slice(0, 4).join(', ') }}</p>
       </div>
     </div>
@@ -174,7 +177,8 @@ watch(list, async () => {
 .preview__item.is-on .preview__media {
   clip-path: inset(0 0 0 0);
 }
-.preview__media img {
+.preview__media img,
+.preview__media video {
   width: 100%;
   height: 100%;
   object-fit: cover;
@@ -182,7 +186,8 @@ watch(list, async () => {
   filter: grayscale(0.6) contrast(1.05);
   transition: transform 1.4s var(--ease-out), filter 1.2s;
 }
-.preview__item.is-on .preview__media img {
+.preview__item.is-on .preview__media img,
+.preview__media video {
   transform: scale(1);
   filter: none;
 }
