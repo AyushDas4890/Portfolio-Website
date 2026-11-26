@@ -7,3 +7,6 @@ scripts/.inst
 scripts/.c4scan
 
 .vercel
+.output
+.nuxt
+.data
